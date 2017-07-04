@@ -1,0 +1,15 @@
+{
+  "name": "tudo-sobre-angular-branas",
+  "version": "1.0.0",
+  "description": "Rodrigo Branas course.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "browser-sync start --server --files \"*.css, *.html, *.js\""
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "Sergio Soares",
+  "license": "ISC"
+}
