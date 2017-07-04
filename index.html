@@ -1,17 +1,71 @@
-<html ng-app="helloWorld">
-	<head>
-		<title>Hello World</title>
-		<script src="angular.min.js"></script>
+<html ng-app="listaTelefonica">
+<head>
+	<title>Lista Telefonica</title>
+	<script src="lib/angular/angular.js"></script>
+	<link rel="stylesheet" text="text/css" href="lib/bootstrap/bootstrap.css">
 		
-		<script>
-			var app = angular.module('helloWorld', []);
-			
-			app.controller('helloWorldCtrl', function($scope){
-				$scope.message = "Hello World";	
-			});
-		</script>
-	</head>
-<body ng-controller="helloWorldCtrl">
-		{{message}}
+	<style>
+		.jumbotron {
+			width: 400px;
+			text-align: center;
+			margin-top: 28px;
+			margin-left: auto;
+			margin-right: auto;	
+		}
+		
+		.table{
+			margin-top: 20px;
+
+		}
+
+		.form-control{
+			margin-bottom: 5px;
+		}
+	</style>	
+
+	<script>
+		angular.module('listaTelefonica', []);
+		angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function($scope){
+				$scope.app = "ListaTelefonica";
+				$scope.contatos = [
+					{nome:"pedro", telefone: "999999999"},
+					{nome:"maria", telefone: "999999999"},
+					{nome:"carlos", telefone: "999999999"}
+				];
+
+				$scope.adicionarContato = function(contato){
+					var novoContato = angular.copy(contato);
+					$scope.contatos.push(contato);
+					delete $scope.contato;
+				};
+
+				console.log($scope);	
+		});
+
+	</script>
+<head>
+
+<body ng-controller="listaTelefonicaCtrl">
+	<div class="jumbotron">
+		<h3> {{app}}</h3>
+		<table class="table table-striped ">
+			<tr>
+				<th>Nome</th>
+				<th>Telefone</th>
+			</tr>
+			<tr ng-repeat="contato in contatos">
+				<td>{{contato.nome}}</td>	
+				<td>{{contato.telefone}}</td>
+			</tr>
+		</table>
+
+		<hr/>
+
+		<input type="text" class="form-control" ng-model="contato.nome" placeholder="Nome" />
+		<input type="text" class="form-control" ng-model="contato.telefone" placeholder="Telefone" />
+		<button class="btn btn-primary btn-block"ng-click="adicionarContato(contato)"> Adicionar Contato</button>
+		{{contato.nome}}
+		{{contato.telefone}}
+	</div>	
 </body>
 </html>
